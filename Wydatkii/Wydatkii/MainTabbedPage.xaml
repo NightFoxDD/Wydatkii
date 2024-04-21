@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Wydatkii.MainTabbedPage"
+             NavigationPage.HasNavigationBar="False"
+            >
+  <!--Pages can be added as references or inline-->
+    <ContentPage Title="Utwórz Wydatki">
+        <StackLayout Margin="10">
+            <Label Text="Tutaj możesz zapisać swoje Wydatki" HorizontalTextAlignment="Center" Margin="20"/>
+            <Frame HasShadow="True" Margin="5">
+                <StackLayout>
+                    <Label Text="Nazwa wydatki"/>
+                    <Entry x:Name="E_NameCost" Keyboard="Default"/>
+                    <Label Text="Kwota wydatku"/>
+                    <Entry x:Name="E_ValueCost" Keyboard="Numeric"/>
+                    <Label Text="Nazwa wydatki"/>
+                    <DatePicker x:Name="DP_DateCost"/>
+                    <Button Text="DODAJ WYDATEK" Padding="20" BorderColor="Black" BorderWidth="1" HorizontalOptions="Center" BackgroundColor="Transparent" CornerRadius="10" Clicked="Btn_AddCost_Clicked"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage>
+    <ContentPage Title="Twoje Wydatki" >
+        <StackLayout>
+            <ListView x:Name="LV_Costs">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame Padding="5" HasShadow="True">
+                                <StackLayout>
+                                    <Button BackgroundColor="Transparent" HorizontalOptions="Start" Text="{Binding Date}" FontAttributes="None" CommandParameter="{Binding .}" Clicked="Btn_CheckCost_Clicked"/>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage>
+</TabbedPage>
